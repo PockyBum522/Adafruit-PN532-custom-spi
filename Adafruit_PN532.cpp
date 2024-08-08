@@ -142,6 +142,19 @@ Adafruit_PN532::Adafruit_PN532(uint8_t reset, HardwareSerial *theSer)
 
 /**************************************************************************/
 /*!
+    @brief  Instantiates a new PN532 class using a custom Adafruit_SPIDevice (See: https://github.com/adafruit/Adafruit-PN532/issues/117)
+
+    @param  ss                   SPI chip select pin (CS/SSEL)
+	@param  adafruitSpiDevice    pointer to Adafruit_SPIDevice to use
+*/
+/**************************************************************************/
+Adafruit_PN532::Adafruit_PN532(uint8_t ss, Adafruit_SPIDevice *adafruitSpiDevice) {
+  _cs = ss;
+  spi_dev = adafruitSpiDevice;
+}
+
+/**************************************************************************/
+/*!
     @brief  Setups the HW
 
     @returns  true if successful, otherwise false
